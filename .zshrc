@@ -114,9 +114,10 @@ alias WORK="cd ~/workspace && ls -la"
 alias CODING="cd /mnt/c/Users/felip/OneDrive/Escritorio/Code && ls -la"
 alias DESK="cd /mnt/c/Users/felip/OneDrive/Escritorio && ls -la"
 alias clip="clip.exe"
-alias open="wsl-open"
+alias open="explorer.exe"
 alias browser="open https://google.com"
-alias termConfig="cd /mnt/c/Users/felip/AppData/Local/Packages/Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe/LocalState && vim settings.json"
+alias termConfig="cd /mnt/c/Users/felip/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState && vim settings.json"
+alias live="live-server"
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -135,3 +136,7 @@ if [ -f '/home/felipe/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/feli
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# required to use global added yarn packages
+ export PATH="$(yarn global bin):$PATH"
