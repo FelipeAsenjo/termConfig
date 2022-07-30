@@ -37,18 +37,15 @@ Plug 'itchyny/lightline.vim'
 " IDE
 Plug 'easymotion/vim-easymotion'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-"Plug 'junegunn/fzf' ( buscadores multiarchivo )
-"Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 "Plug 'terryma/vim-multiple-cursors' ( otro de cursores multiples )
-"Plug 'yggdroot/indentline' ( muestra linea marcadora de indentacion )
 
 " COMMENTS
 Plug 'preservim/nerdcommenter'
 
-
 " HIGHLIGHT LANGUAGES
 Plug 'sheerun/vim-polyglot'
-
 
 " TYPING
 Plug 'jiangmiao/auto-pairs'
@@ -63,12 +60,14 @@ Plug 'christoomey/vim-tmux-navigator'
 "Plug 'sirver/ultisnips'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-
 " Tree & navigation
 Plug 'scrooloose/nerdtree'
 
 let NERDTreeQuitOnOpen=1
 let g:EasyMotion_smartcase=1
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.php,*.jsx"
+
+command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
 call plug#end()
 " --END PLUGINS--
@@ -78,7 +77,10 @@ let mapleader=' '
 " Plugin maps
 map <Leader>nt :NERDTreeFind<CR>
 map <Leader>s <Plug>(easymotion-s2)
-"map <Leader>p :Files<CR> ( fzf )
+" Search files references
+map <Leader>p :Files<CR>
+" Search function or variable references
+noremap <Leader>gs :CocSearch 
 
 " Split & split resize
 nnoremap <Leader>j :sp<CR>
@@ -94,10 +96,13 @@ nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 
 " Go to's
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent>gd <Plug>(coc-definition)
+nmap <silent>gy <Plug>(coc-type-definition)
+nmap <silent>gi <Plug>(coc-implementation)
+nmap <silent>gr <Plug>(coc-references)
+
+" Format code
+nmap <leader>f :Prettier<CR>
 
 " Faster scrolling
 nnoremap <S-j> 10j
@@ -108,3 +113,6 @@ nnoremap <Leader>x :!node %<cr>
 
 " Current path to clipboard
 nnoremap <Leader>r :.!pwd<CR>
+
+" Easy ESC
+:imap jk <Esc>
