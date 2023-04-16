@@ -107,6 +107,8 @@ nmap <leader>f :Prettier<CR>
 " Faster scrolling
 nnoremap <S-j> 10j
 nnoremap <S-k> 10k
+nnoremap <S-l> $
+nnoremap <S-h> ^
 
 " Run current file
 nnoremap <Leader>x :!node %<cr>
