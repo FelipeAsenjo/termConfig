@@ -26,6 +26,13 @@ autocmd BufNewFile *.html 0r ~/.vim/templates/html.skel
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
+" -- AUTOMATED vim-plug INSTALLATION
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " -- INIT PLUGINS--
 call plug#begin('~/.vim/plugged')
 
