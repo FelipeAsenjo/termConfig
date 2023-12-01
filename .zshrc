@@ -115,6 +115,8 @@ alias clip='xclip -sel clip'
 alias open='xdg-open'
 alias web='open https://www.google.com/'
 alias projects='cd ~/workspace/projects && l'
+alias tjene='cd ~/workspace/tjene && l'
+alias DESK='cd /mnt/c/Users/felip && l'
 alias tf='terraform'
 alias kb='kubectl'
 alias sus='systemctl suspend'
@@ -153,3 +155,10 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+# bun completions
+[ -s "/home/felipe/.bun/_bun" ] && source "/home/felipe/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
